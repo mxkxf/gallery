@@ -1,5 +1,30 @@
-$colour: red;
-
-body {
-  background-color: $colour;
+.gallery {
+  // overflow: hidden;
+  height: 480px;
+  position: relative;
+  width: 100%;
 }
+
+  .gallery-inner {
+    list-style: none;
+    margin: 0;
+    position: absolute;
+    // transition: all 500ms;
+    > * {
+      float: left;
+      // margin-right: 20px;
+      // width: 200px;
+    }
+  }
+
+  .gallery-control {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    &.gallery-prev {
+      left: 0;
+    }
+    &.gallery-next {
+      right: 0;
+    }
+  }

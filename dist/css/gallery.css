@@ -1,1 +1,1 @@
-body{background-color:red}
+.gallery{height:480px;position:relative;width:100%}.gallery-inner{list-style:none;margin:0;position:absolute}.gallery-inner>*{float:left}.gallery-control{position:absolute;top:50%;z-index:1}.gallery-control.gallery-prev{left:0}.gallery-control.gallery-next{right:0}

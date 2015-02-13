@@ -7,7 +7,14 @@
   padding: 0;
 }
 
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 .container {
-  margin: 4em auto;
-  width: 640px;
+  margin: 2em auto;
+  max-width: 640px;
+  padding: 0 2em;
 }
