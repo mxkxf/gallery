@@ -35,7 +35,7 @@ $(function() {
     $gallery.height(galleryHeight);
     $galleryInner.width(galleryWidth);
 
-    $('.gallery-inner > *').width($gallery.width());
+    // $('.gallery-inner > *').width($gallery.width());
 
   });
 

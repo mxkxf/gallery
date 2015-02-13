@@ -1,5 +1,5 @@
 .gallery {
-  // overflow: hidden;
+  overflow: hidden;
   height: 480px;
   position: relative;
   width: 100%;
@@ -12,19 +12,27 @@
     // transition: all 500ms;
     > * {
       float: left;
-      // margin-right: 20px;
-      // width: 200px;
     }
   }
 
   .gallery-control {
+    color: #fff;
     position: absolute;
     top: 50%;
     z-index: 1;
+    > span {
+      display: none;
+    }
     &.gallery-prev {
-      left: 0;
+      left: 2em;
+      &:after {
+        content: '\2190';
+      }
     }
     &.gallery-next {
-      right: 0;
+      right: 2em;
+      &:after {
+        content: '\2192';
+      }
     }
   }

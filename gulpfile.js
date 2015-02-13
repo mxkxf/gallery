@@ -4,7 +4,8 @@ var gulp         = require('gulp'),
     minifycss    = require('gulp-minify-css'),
     autoprefixer = require('gulp-autoprefixer'),
     browserify   = require('browserify'),
-    source       = require('vinyl-source-stream')
+    source       = require('vinyl-source-stream'),
+    buffer       = require('vinyl-buffer'),
     uglify       = require('gulp-uglify');
 
 gulp.task('connect', function() {
@@ -29,7 +30,8 @@ gulp.task('js', function() {
     })
     .bundle()
     .pipe(source('main.js'))
-    // .pipe(uglify())
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest('dist/js'));
 });
 
