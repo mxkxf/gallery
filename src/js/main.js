@@ -13,7 +13,8 @@ $(function() {
       slideWidth      = 0,
       moveSlides      = 1,
       speed           = 400,
-      easing          = 'swing';
+      easing          = 'swing',
+      startingPos;
 
   $(window).on('load resize', function() {
 
@@ -35,19 +36,17 @@ $(function() {
     $gallery.height(galleryHeight);
     $galleryInner.width(galleryWidth);
 
-    // $('.gallery-inner > *').width($gallery.width());
-
   });
 
   $buttonPrev.on('click', function(e) {
-    var startingPos = $('.gallery-inner').position().left;
+    startingPos = $('.gallery-inner').position().left;
     $('.gallery-inner > *:last-child').insertBefore('.gallery-inner > *:first-child');
     $galleryInner.css('left', (startingPos - slideWidth) + 'px');
     $galleryInner.not(':animated').animate({left: startingPos + 'px'}, speed, easing);
   });
 
   $buttonNext.on('click', function(e) {
-    var startingPos = $('.gallery-inner').position().left;
+    startingPos = $('.gallery-inner').position().left;
     $('.gallery-inner > *:first-child').insertAfter('.gallery-inner > *:last-child');
     $galleryInner.css('left', (startingPos + slideWidth) + 'px');
     $galleryInner.not(':animated').animate({left: startingPos + 'px'}, speed, easing);
