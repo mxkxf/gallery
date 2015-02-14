@@ -25,14 +25,13 @@ gulp.task('css', function() {
 })
 
 gulp.task('js', function() {
-  return browserify({
-      entries: './src/js/main.js'
-    })
+  return browserify({ entries: './src/js/main.js' })
     .bundle()
     .pipe(source('main.js'))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(gulp.dest('dist/js'));
+    .pipe(gulp.dest('dist/js'))
+    .pipe(connect.reload());
 });
 
 gulp.task('watch', function() {

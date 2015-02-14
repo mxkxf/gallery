@@ -4,37 +4,48 @@ var $ = require('jquery');
 
 $(function() {
 
-  var $gallery        = $('.gallery'),
-      $galleryInner   = $('.gallery-inner', $gallery),
-      galleryHeight   = 0,
-      galleryWidth    = 0,
-      $buttonPrev     = $('.gallery-prev', $gallery),
-      $buttonNext     = $('.gallery-next', $gallery),
-      slideWidth      = 0,
-      moveSlides      = 1,
-      speed           = 400,
-      easing          = 'swing',
+  var $gallery      = $('.gallery'),
+      $galleryInner = $('.gallery-inner', $gallery),
+      galleryHeight = 0,
+      galleryWidth  = 0,
+      $buttonPrev   = $('.gallery-prev', $gallery),
+      $buttonNext   = $('.gallery-next', $gallery),
+      slideWidth    = 0,
+      speed         = 400,
+      easing        = 'swing',
       startingPos;
 
-  $(window).on('load resize', function() {
+  galleryHeight = 0;
+  galleryWidth  = 0;
+
+  slideWidth = $galleryInner.children(':first-child').outerWidth(true);
+  $galleryInner.css('left', 0 - slideWidth);
+  $('.gallery-inner > *:last-child').insertBefore('.gallery-inner > *:first-child');
+
+  $galleryInner.children().each(function() {
+    var $galleryItem = $(this);
+    if ($galleryItem.height() > galleryHeight) {
+      galleryHeight = $galleryItem.height();
+    }
+    galleryWidth += $galleryItem.width();
+  });
+
+  $gallery.height(galleryHeight);
+  $galleryInner.width(galleryWidth);
+
+  $(window).on('resize', function() {
 
     galleryHeight = 0;
     galleryWidth  = 0;
-
-    slideWidth = $galleryInner.children(':first-child').outerWidth();
-    $galleryInner.css('left', 0 - slideWidth);
-    $('.gallery-inner > *:last-child').insertBefore('.gallery-inner > *:first-child');
 
     $galleryInner.children().each(function() {
       var $galleryItem = $(this);
       if ($galleryItem.height() > galleryHeight) {
         galleryHeight = $galleryItem.height();
       }
-      galleryWidth += $galleryItem.width();
     });
 
     $gallery.height(galleryHeight);
-    $galleryInner.width(galleryWidth);
 
   });
 
