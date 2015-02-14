@@ -15,9 +15,6 @@ $(function() {
       easing        = 'swing',
       startingPos;
 
-  galleryHeight = 0;
-  galleryWidth  = 0;
-
   $('.gallery-inner > *:last-child').insertBefore('.gallery-inner > *:first-child');
 
   $(window).on('load resize', function() {
