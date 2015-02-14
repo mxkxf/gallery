@@ -15,9 +15,10 @@
     list-style: none;
     margin: 0;
     position: absolute;
+    z-index: 100;
     > * {
       float: left;
-      margin-right: 20px;
+      margin-right: 1em;
       @include resp-max(777px) {
         width: 208px;
       }
@@ -29,7 +30,7 @@
     cursor: pointer;
     position: absolute;
     top: 50%;
-    z-index: 1;
+    z-index: 200;
     > span {
       display: none;
     }

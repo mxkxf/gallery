@@ -18,7 +18,7 @@ gulp.task('connect', function() {
 gulp.task('css', function() {
   gulp.src('src/scss/**/*.scss')
     .pipe(sass())
-    .pipe(autoprefixer('last 2 versions'))
+    .pipe(autoprefixer('last 2 version'))
     .pipe(minifycss())
     .pipe(gulp.dest('dist/css'))
     .pipe(connect.reload());
