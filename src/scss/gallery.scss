@@ -35,13 +35,13 @@
       display: none;
     }
     &.gallery-prev {
-      left: 2em;
+      left: 1em;
       &:after {
         content: '\2190';
       }
     }
     &.gallery-next {
-      right: 2em;
+      right: 1em;
       &:after {
         content: '\2192';
       }
