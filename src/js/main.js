@@ -6,6 +6,7 @@ $(function() {
 
   var $gallery      = $('.gallery'),
       $galleryInner = $('.gallery-inner', $gallery),
+      $galleryItem,
       galleryHeight = 0,
       galleryWidth  = 0,
       $buttonPrev   = $('.gallery-prev', $gallery),
@@ -15,39 +16,39 @@ $(function() {
       easing        = 'swing',
       startingPos;
 
-  $('.gallery-inner > *:last-child').insertBefore('.gallery-inner > *:first-child');
+  $(window).on('load', function() {
+    galleryInit();
+    $galleryInner.children(':last-child').insertBefore($galleryInner.children(':first-child'));
+  });
 
-  $(window).on('load resize', function() {
+  $(window).on('resize', galleryInit);
 
-    slideWidth = $galleryInner.children(':first-child').outerWidth(true);
-    $galleryInner.css('left', 0 - slideWidth);
-
+  function galleryInit() {
     galleryHeight = 0;
     galleryWidth  = 0;
-
+    slideWidth = $galleryInner.children(':first-child').outerWidth(true);
+    $galleryInner.css('left', 0 - slideWidth);
     $galleryInner.children().each(function() {
-      var $galleryItem = $(this);
+      $galleryItem = $(this);
       if ($galleryItem.height() > galleryHeight) {
         galleryHeight = $galleryItem.height();
       }
       galleryWidth += $galleryItem.width();
     });
-
     $gallery.height(galleryHeight);
     $galleryInner.width(galleryWidth);
-
-  });
+  }
 
   $buttonPrev.on('click', function(e) {
-    startingPos = $('.gallery-inner').position().left;
-    $('.gallery-inner > *:last-child').insertBefore('.gallery-inner > *:first-child');
+    startingPos = $galleryInner.position().left;
+    $galleryInner.children(':last-child').insertBefore($galleryInner.children(':first-child'));
     $galleryInner.css('left', (startingPos - slideWidth) + 'px');
     $galleryInner.not(':animated').animate({left: startingPos + 'px'}, speed, easing);
   });
 
   $buttonNext.on('click', function(e) {
-    startingPos = $('.gallery-inner').position().left;
-    $('.gallery-inner > *:first-child').insertAfter('.gallery-inner > *:last-child');
+    startingPos = $galleryInner.position().left;
+    $galleryInner.children(':first-child').insertAfter($galleryInner.children(':last-child'));
     $galleryInner.css('left', (startingPos + slideWidth) + 'px');
     $galleryInner.not(':animated').animate({left: startingPos + 'px'}, speed, easing);
   });
