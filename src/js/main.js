@@ -2,7 +2,7 @@
 
 var $ = require('jquery');
 
-$(function() {
+(function() {
 
   var $gallery         = $('.gallery'),
       $galleryInner    = $('.gallery-inner', $gallery),
@@ -53,4 +53,4 @@ $(function() {
     $galleryInner.not(':animated').animate({left: galleryInnerLeft + 'px'}, speed, easing);
   });
 
-});
+})($);
