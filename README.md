@@ -12,6 +12,4 @@ Uses gulp to run tasks; the default task includes a `gulp-connect` server which 
 
     gulp
 
-And visited in the browser at `http://localhost:8080`
-
-Demo/test files are located in `/demo`
+This will then make the `/demo` files avaiable in the browser by visiting `http://localhost:8080`
